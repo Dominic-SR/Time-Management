@@ -1,0 +1,8 @@
+@import "tailwindcss";
+:root{
+ --shining-black:linear-gradient(145deg,#000000,#1a1a1a,#333333,#1a1a1a,#000000);
+}
+
+.bg-shining-black{
+    background: var(--shining-black);
+}
