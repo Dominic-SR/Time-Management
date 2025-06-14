@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router'
-import Dashboard from './Pages/Dashboard'
-import Header from './Components/Header/Header'
+import Dashboard from './Pages/Dashboard/Dashboard'
+import Main from './Pages/Main/Main'
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Header />}>
-          <Route path="" element={<Dashboard />} />
+        <Route element={<Main/>}>
+          <Route path="/" element={<Dashboard/>} />
         </Route>
       </Routes>
     </BrowserRouter>
