@@ -7,12 +7,17 @@ const Dashboard = () => {
  const pieElement = useRef(null); 
  const [pieChartHeight, setPieChartHeight] = useState(0)
  const [cardDetails, setCardDetails] = useState([])
- const series= [44, 55, 13, 43, 22]
+ const [chartPercentage, setChartPercentage] = useState([])
+ const [chartLabel, setChartLabel] = useState([])
+ console.log("one",chartLabel);
+ console.log("two",chartPercentage);
+ 
+ const series= [44, 44, 44, 44, 44]
  const options = {
     chart: {
       type: 'pie',
     },
-    labels: ['Apples', 'Bananas', 'Cherries', 'Dates'],
+    labels: chartLabel,
     colors: ['#1E1E1E', '#444', '#777'],
     legend: {
       position: 'bottom',
@@ -36,11 +41,35 @@ const Dashboard = () => {
     
   };
 
+  const timeToPercentage = (timeStr) => {
+  // Expecting format "hh:mm:ss:ms"
+  const [hours, minutes, seconds, milliseconds] = timeStr.split(':').map(Number);
+
+  const totalMs = 
+      (hours * 3600000) +
+      (minutes * 60000) +
+      (seconds * 1000) +
+      milliseconds;
+
+  const percentage = (totalMs / 86400000) * 100;
+  return percentage.toFixed(5);
+}
+
   useEffect(()=>{
     setPieChartHeight(Math.round(pieElement.current.getBoundingClientRect().height - 100))
+    const getActivity = JSON.parse(localStorage.getItem('activity'))
+    setCardDetails(...cardDetails, getActivity)
 
-    const getActivity = localStorage.getItem('activity')
-    setCardDetails(...cardDetails, JSON.parse(getActivity))
+    let getLabel=[]
+    let getPercentage=[]
+    getActivity.map((item)=>{
+      getLabel.push(item.activity)
+      let getResPercentage = timeToPercentage(item.time);
+      getPercentage.push(getResPercentage)
+    })
+      setChartLabel(getLabel)
+      setChartPercentage(getPercentage)
+
   },[])
   
 
