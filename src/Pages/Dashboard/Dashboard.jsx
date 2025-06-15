@@ -6,53 +6,7 @@ import Card from '../../Components/Card/Card';
 const Dashboard = () => {
  const pieElement = useRef(null); 
  const [pieChartHeight, setPieChartHeight] = useState(0)
- const [cardDetails, setCardDetails] = useState([
-  {
-    id:1,
-    label:"One",
-    count:22
-  },
-  {
-    id:2,
-    label:"Two",
-    count:23
-  },
-  {
-    id:3,
-    label:"Three",
-    count:33
-  },
-  {
-    id:4,
-    label:"Four",
-    count:44
-  },
-  {
-    id:5,
-    label:"Five",
-    count:55
-  },
-  {
-    id:6,
-    label:"Six",
-    count:6
-  },
-  {
-    id:7,
-    label:"Four",
-    count:44
-  },
-  {
-    id:8,
-    label:"Five",
-    count:55
-  },
-  {
-    id:9,
-    label:"Six",
-    count:6
-  },
- ])
+ const [cardDetails, setCardDetails] = useState([])
  const series= [44, 55, 13, 43, 22]
  const options = {
     chart: {
@@ -84,6 +38,9 @@ const Dashboard = () => {
 
   useEffect(()=>{
     setPieChartHeight(Math.round(pieElement.current.getBoundingClientRect().height - 100))
+
+    const getActivity = localStorage.getItem('activity')
+    setCardDetails(...cardDetails, JSON.parse(getActivity))
   },[])
   
 

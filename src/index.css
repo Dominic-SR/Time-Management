@@ -6,3 +6,20 @@
 .bg-shining-black{
     background: var(--shining-black);
 }
+
+.form-control{
+    border: 1px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+}
+
+.primary-btn{
+    background: var(--shining-black);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    height: 45px;
+    border: 1px solid #fff;
+    min-width: fit-content;
+}
