@@ -58,11 +58,11 @@ const Dashboard = () => {
   useEffect(()=>{
     setPieChartHeight(Math.round(pieElement.current.getBoundingClientRect().height - 100))
     const getActivity = JSON.parse(localStorage.getItem('activity'))
-    setCardDetails(...cardDetails, getActivity)
+    getActivity && setCardDetails(...cardDetails, getActivity)
 
     let getLabel=[]
     let getPercentage=[]
-    getActivity.map((item)=>{
+    getActivity?.map((item)=>{
       getLabel.push(item.activity)
       let getResPercentage = timeToPercentage(item.time);
       getPercentage.push(getResPercentage)
@@ -75,8 +75,8 @@ const Dashboard = () => {
 
   return (
     <div className='flex justify-between w-full h-[90%]' ref={pieElement}>
-      <div className='flex items-center justify-center w-[50%] h-full '>
-        <div className='block w-[90%]'>
+      <div className='flex items-center justify-center w-[50%] h-full py-[50px] px-[50px]'>
+        <div className='block w-[90%] h-[90%]'>
         {pieChartHeight !== 0 && <ReactApexChart options={options} series={series} type="pie" height={pieChartHeight} />}
         </div>
       </div>
