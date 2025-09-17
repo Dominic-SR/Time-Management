@@ -42,8 +42,8 @@ const Dashboard = () => {
   };
 
   const timeToPercentage = (timeStr) => {
-  // Expecting format "hh:mm:ss:ms"
-  const [hours, minutes, seconds, milliseconds] = timeStr.split(':').map(Number);
+
+  const [hours, minutes, seconds, milliseconds] = timeStr?.split(':')?.map(Number);
 
   const totalMs = 
       (hours * 3600000) +
@@ -64,7 +64,7 @@ const Dashboard = () => {
     let getPercentage=[]
     getActivity?.map((item)=>{
       getLabel.push(item.activity)
-      let getResPercentage = timeToPercentage(item.time);
+      let getResPercentage = timeToPercentage(item?.time);
       getPercentage.push(getResPercentage)
     })
       setChartLabel(getLabel)
@@ -74,7 +74,7 @@ const Dashboard = () => {
   
 
   return (
-    <div className='flex justify-between w-full h-[90%]' ref={pieElement}>
+    <div className='flex justify-between w-full h-[90%] p-[50px]' ref={pieElement}>
       <div className='flex items-center justify-center w-[50%] h-full py-[50px] px-[50px]'>
         <div className='block w-[90%] h-[90%]'>
         {pieChartHeight !== 0 && <ReactApexChart options={options} series={series} type="pie" height={pieChartHeight} />}
