@@ -61,7 +61,6 @@ const Dashboard = () => {
 
     let getLabel=[]
     let getPercentage=[]
-       console.log("vvvv",getActivity);
     getActivity?.map((item)=>{
       getLabel.push(item.activity)
       let getResPercentage = timeToPercentage(item?.time);

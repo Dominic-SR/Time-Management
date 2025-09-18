@@ -9,7 +9,7 @@ const Header = () => {
   }
 
   return (
-    <div className='flex items-center justify-between h-[10%] py-4 px-4 bg-shining-black'>
+    <div className='flex items-center justify-between w-full h-[10%] py-4 px-4 bg-shining-black'>
         {showActivity && <Popup closeActivityPopup={closeActivityPopup} />}
         <h1 className='text-white'>Time management</h1>
 
