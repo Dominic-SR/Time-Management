@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 
-const Popup = ({closeActivityPopup}) => {
+const Popup = ({closeActivityPopup, setShowActivity}) => {
   const [activity, setActivity] = useState([]);
 
   const handleChange = (e) =>{
@@ -16,7 +16,8 @@ const Popup = ({closeActivityPopup}) => {
 
   const handleSubmit = (e) =>{  
     e.preventDefault();
-    localStorage.setItem('activity', JSON.stringify(activity)); 
+    localStorage.setItem('activity', JSON.stringify(activity));
+    setShowActivity(false) 
   }
 
   useEffect(()=>{

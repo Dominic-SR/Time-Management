@@ -41,18 +41,18 @@ const Dashboard = () => {
     
   };
 
-  const timeToPercentage = (timeStr) => {
-  const [hours, minutes, seconds, milliseconds] = timeStr?.split(':')?.map(Number);
+//   const timeToPercentage = (timeStr) => {
+//   const [hours, minutes, seconds, milliseconds] = timeStr?.split(':')?.map(Number);
 
-  const totalMs = 
-      (hours * 3600000) +
-      (minutes * 60000) +
-      (seconds * 1000) +
-      milliseconds;
+//   const totalMs = 
+//       (hours * 3600000) +
+//       (minutes * 60000) +
+//       (seconds * 1000) +
+//       milliseconds;
 
-  const percentage = (totalMs / 86400000) * 100;
-  return percentage.toFixed(5);
-}
+//   const percentage = (totalMs / 86400000) * 100;
+//   return percentage.toFixed(5);
+// }
 
   useEffect(()=>{
     setPieChartHeight(Math.round(pieElement.current.getBoundingClientRect().height - 100))
@@ -63,8 +63,8 @@ const Dashboard = () => {
     let getPercentage=[]
     getActivity?.map((item)=>{
       getLabel.push(item.activity)
-      let getResPercentage = timeToPercentage(item?.time);
-      getPercentage.push(getResPercentage)
+      // let getResPercentage = timeToPercentage(item);
+      // getPercentage.push(getResPercentage)
     })
       setChartLabel(getLabel)
       setChartPercentage(getPercentage)
@@ -73,7 +73,7 @@ const Dashboard = () => {
   
 
   return (
-    <div className='flex justify-between w-full h-[90%] p-[50px]' ref={pieElement}>
+    <div className='flex justify-between w-full h-[90%]' ref={pieElement}>
       <div className='flex items-center justify-center w-[50%] h-full py-[50px] px-[50px]'>
         <div className='block w-[90%] h-[90%]'>
         {pieChartHeight !== 0 && <ReactApexChart options={options} series={series} type="pie" height={pieChartHeight} />}
