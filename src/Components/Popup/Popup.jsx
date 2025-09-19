@@ -8,7 +8,7 @@ const Popup = ({closeActivityPopup, setShowActivity}) => {
     let getActivity = []
     getActivity = localStorage.getItem('activity') ? JSON.parse(localStorage.getItem('activity')) : [];
     const genNum =  Math.floor(1000 + Math.random() * 9000);;
-    console.log("sss",genNum);
+    //console.log("sss",genNum);
     
     getActivity.push({['id']:genNum,[name]:value})
     setActivity(getActivity)
@@ -30,6 +30,9 @@ const Popup = ({closeActivityPopup, setShowActivity}) => {
        <form className='flex flex-col w-4/5 m-auto'  onSubmit={handleSubmit}>
         <h2 className='text-white text-left my-4'>Activity</h2>
         <input className='form-control mt-[10px]' type='text' name='activity' placeholder='Activity name' onChange={handleChange} />
+
+         <input className='form-control mt-[10px]' type='time' step="1" name='settime' placeholder='Set Time' onChange={handleChange} />
+
         <button className='primary-btn fixed bottom-[25px] right-[25px]'>Submit</button>
        </form>
         <button className='primary-btn fixed bottom-[25px] left-[25px]' onClick={closeActivityPopup}>Cancel</button>
